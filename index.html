@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Irza Hameed — Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg: #fdf8ff;
+      --text: #1f3038;
+      --muted: #304369;
+      --lav: #8170c4; /* chosen accent */
+      --card-shadow: 0 10px 30px rgba(40,50,60,0.06);
+      --soft: 0 6px 18px rgba(40,50,60,0.05);
+      --radius: 14px;
+      --gap: 22px;
+    }
+
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.55;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+
+    /* Container */
+    .wrap{max-width:1100px;margin:0 auto;padding:36px 20px}
+
+    /* NAV */
+    header{
+      position:sticky;top:16px;z-index:60;
+      background:rgba(235, 225, 252, 0.8);
+      backdrop-filter:blur(6px);
+      border-radius:999px;
+      box-shadow:var(--soft);
+      padding:10px 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#fff,var(--lav));display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:var(--lav);font-size:18px;box-shadow:0 8px 20px rgba(184,167,255,0.08);
+    }
+    .brand .name{font-weight:700;letter-spacing:0.2px}
+    nav ul{display:flex;gap:18px;list-style:none}
+    nav a{padding:8px 10px;border-radius:10px;color:var(--muted);font-weight:600;transition:all .16s}
+    nav a:hover{color:var(--text);background:rgba(184,167,255,0.07)}
+
+    /* HERO (flat minimal) */
+    .hero{
+      display:flex;align-items:center;gap:28px;padding:60px 0 36px;
+    }
+    .hero-left{flex:1;min-width:260px}
+    .eyebrow{display:inline-block;color:var(--lav);font-weight:600;font-size:13px;margin-bottom:12px}
+    h1{
+      font-size:36px;color:var(--text);margin:8px 0 8px;font-weight:700;
+    }
+    .title-sub{color:var(--muted);font-size:16px;margin-bottom:16px}
+    .lead{color:var(--text);max-width:68ch;margin-bottom:18px}
+
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{
+      padding:10px 14px;border-radius:12px;font-weight:700;border:1px solid rgba(38,50,56,0.06);
+      background:#c1c0cf;cursor:pointer;box-shadow:var(--card-shadow);display:inline-flex;gap:10px;align-items:center;
+    }
+    .btn.primary{background:linear-gradient(90deg,var(--lav),#d6ccff);color:#fff;border:none}
+    .socials{display:flex;gap:10px;margin-left:auto}
+    .icon{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:rgba(184,167,255,0.08);color:var(--lav)}
+
+    /* hero image small circular card */
+    .hero-right{
+      width:140px;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .avatar-wrap{
+      width:120px;height:120px;border-radius:999px;overflow:hidden;border:6px solid rgba(184,167,255,0.12);
+      box-shadow:0 12px 30px rgba(40,50,60,0.06);
+      display:flex;align-items:center;justify-content:center;background:#fff;
+    }
+    .avatar-wrap img{width:120%;height:120%;object-fit:cover}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:20px}
+    .section-head h2{font-size:20px;color:var(--text);font-weight:700}
+    .section-head p{color:var(--muted);font-size:13px;margin:0}
+
+    /* ABOUT */
+    .about .cols{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+    .about .card{background:#d5d4e0;padding:18px;border-radius:12px;box-shadow:var(--soft)}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+    .skill-card{
+      background:linear-gradient(180deg,#fff,#c1c0cf);border:1px solid rgba(38,50,56,0.04);
+      padding:12px;border-radius:10px;box-shadow:var(--soft);text-align:center;font-weight:600;color:var(--muted)
+    }
+    .skill-card strong{display:block;color:var(--text);margin-bottom:6px;font-weight:700}
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .project{
+      background:#e8e7f3;border-radius:12px;padding:16px;box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s;
+    }
+    .project:hover{transform:translateY(-8px);box-shadow:0 20px 45px rgba(40,50,60,0.08)}
+    .project h3{color:var(--lav);margin-bottom:8px}
+    .project p{color:var(--muted);font-size:14px}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+    form{display:flex;flex-direction:column;gap:12px}
+    input,textarea,select{padding:12px;border-radius:10px;border:1px solid rgba(38,50,56,0.06);font-size:15px}
+    textarea{min-height:120px;resize:vertical}
+    .card-contact{background:linear-gradient(180deg,#ffffff,#c1c0cf);padding:16px;border-radius:12px;box-shadow:var(--soft)}
+
+    /* Footer */
+    footer{padding:18px 0;text-align:center;background:linear-gradient(90deg,rgba(184,167,255,0.06),rgba(184,167,255,0.03));border-top:1px solid rgba(38,50,56,0.02);margin-top:26px;color:var(--muted);font-size:14px}
+
+    /* Fade-in reveals */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width:980px){
+      header{padding:8px 12px}
+      .hero{flex-direction:column;align-items:flex-start}
+      .hero-right{align-self:flex-end}
+      .about .cols{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- NAV -->
+    <header>
+      <div class="brand">
+        <div class="logo">IH</div>
+        <div>
+          <div class="name">Irza Hameed</div>
+          <div style="font-size:12px;color:var(--muted)">Graphic Designer • Front-End Web Developer</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <div class="eyebrow reveal">Available for freelance</div>
+        <h1 id="hero-title" class="reveal">Hi, I'm <span style="color:var(--lav)">Irza Hameed</span></h1>
+        <div class="title-sub reveal"><h3>Graphic Designer & Front-End Web Developer</h3></div>
+        <p class="lead reveal">I blend visual design and front-end development to build clean, accessible, and beautiful web experiences. I specialize in brand visuals, UI design, and small-to-medium web applications.</p>
+
+        <div class="cta-row reveal" style="margin-top:14px">
+          <a class="btn primary" href="#contact"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+          <div class="socials" aria-hidden="false" style="margin-left:12px">
+            <a class="icon" href="https://github.com/irzahameed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a class="icon" href="https://www.linkedin.com/in/irza-hameed/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap" class="reveal">
+          <div style="background:#fff;padding:8px 12px;border-radius:999px;border:1px solid rgba(38,50,56,0.04);font-weight:600;color:var(--muted)">2+ yrs experience</div>
+          <div style="background:#fff;padding:8px 12px;border-radius:999px;border:1px solid rgba(38,50,56,0.04);font-weight:600;color:var(--muted)">Open to remote</div>
+          <div style="background:#fff;padding:8px 12px;border-radius:999px;border:1px solid rgba(38,50,56,0.04);font-weight:600;color:var(--muted)">Rawalpindi, Pakistan</div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="avatar-wrap" aria-hidden="true">
+          <!-- Unsplash image: girl's hands typing on laptop (neutral, professional) -->
+          <img alt="Hands typing on a laptop" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80">
+        </div>
+      </div>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Short summary of my work</p>
+      </div>
+
+      <div class="about">
+        <div class="cols">
+          <div>
+            <div style="color:var(--muted);margin-bottom:14px">
+              I'm a passionate Graphic Designer and Front-End Web Developer who transforms ideas into clean, user-focused interfaces and visuals.
+              I combine brand-first thinking with practical front-end skills to deliver polished products that look great and work well.
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
+              <div class="card">
+                <strong style="display:block;margin-bottom:6px">Education</strong>
+                <div style="color:var(--muted);font-size:14px">BS Computer Science</div>
+              </div>
+
+              <div class="card">
+                <strong style="display:block;margin-bottom:6px">Tools</strong>
+                <div style="color:var(--muted);font-size:14px">Photoshop • Illustrator • Canva • Wordpress • VS Code</div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px">
+              <a class="btn" href="#projects"><i class="fa-regular fa-folder-open"></i> View Projects</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin:0 0 10px;color:var(--lav)">Role & Focus</h3>
+            <p style="color:var(--muted);margin-bottom:10px">Graphic design, brand identity, logos,flyers and responsive front-end development (HTML/CSS/JS).</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <div style="background:#fff;padding:8px 10px;border-radius:8px;border:1px solid rgba(38,50,56,0.04);font-weight:600;color:var(--muted)">Photoshop</div>
+              <div style="background:#fff;padding:8px 10px;border-radius:8px;border:1px solid rgba(38,50,56,0.04);font-weight:600;color:var(--muted)">Canva</div>
+              <div style="background:#fff;padding:8px 10px;border-radius:8px;border:1px solid rgba(38,50,56,0.04);font-weight:600;color:var(--muted)">Front-end developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>Design, front-end, and programming</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card"><strong>Graphic Designer</strong> Photoshop • Illustrator • Canva • Figma</div>
+        <div class="skill-card"><strong>Front-End Dev</strong> HTML • CSS • JavaScript • WordPress</div>
+        <div class="skill-card"><strong>C / C++ / OOP</strong> Core programming & data structures</div>
+        <div class="skill-card"><strong>Java</strong> OOP & application development</div>
+        <div class="skill-card"><strong>Python</strong> Core programming </div>
+        <div class="skill-card"><strong>PHP</strong> Backend basics & WordPress</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>Selected works — brief descriptions</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project">
+          <h3>AI-Based Recommendation System</h3>
+          <p>Built a recommendation engine with a chatbot-style interface — C++ back-end for matching logic, GUI for interaction and personalization.</p>
+        </article>
+
+        <article class="project">
+          <h3>Address Book Management System</h3>
+          <p>Desktop application in C++ for storing, searching, and managing contacts with a simple GUI and persistent storage.</p>
+        </article>
+
+        <article class="project">
+          <h3>Mini Mart Website (Hand-coded)</h3>
+          <p>Front-end built with HTML, CSS, and JavaScript. Product listing, cart flow, and responsive layout — coded from scratch.</p>
+        </article>
+
+        <article class="project">
+          <h3>E-commerce Website (WordPress)</h3>
+          <p> WordPress-based e-commerce store with custom themes and plugin configuration for payments and inventory.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Let's collaborate — I respond within 24–48 hours</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <form id="contactForm">
+            <input id="name" type="text" placeholder="Your name" required>
+            <input id="email" type="email" placeholder="Your email" required>
+            <input id="subject" type="text" placeholder="Subject" required>
+            <textarea id="message" placeholder="Message" required></textarea>
+            <div style="display:flex;gap:12px;align-items:center">
+              <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send message</button>
+              <div style="color:var(--muted);font-size:13px">Or email me at <strong style="color:var(--text);margin-left:6px">irzahameed65@gmail.com</strong></div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="card-contact">
+          <h3 style="margin-top:0;color:var(--lav)">Get in touch</h3>
+          <p style="color:var(--muted)">Prefer direct email or LinkedIn — happy to discuss freelancing or project work.</p>
+
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:44px;height:44px;border-radius:10px;background:rgba(184,167,255,0.08);display:flex;align-items:center;justify-content:center;color:var(--lav)"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <div style="font-weight:700">Email</div>
+                <div style="color:var(--muted);font-size:13px">irzahameed65@gmail.com</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:44px;height:44px;border-radius:10px;background:rgba(184,167,255,0.08);display:flex;align-items:center;justify-content:center;color:var(--lav)"><i class="fa-brands fa-github"></i></div>
+              <div>
+                <div style="font-weight:700">GitHub</div>
+                <a href="https://github.com/irzahameed" target="_blank" style="color:var(--muted);font-size:13px">github.com/irzahameed</a>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:44px;height:44px;border-radius:10px;background:rgba(184,167,255,0.08);display:flex;align-items:center;justify-content:center;color:var(--lav)"><i class="fa-brands fa-linkedin-in"></i></div>
+              <div>
+                <div style="font-weight:700">LinkedIn</div>
+                <a href="https://www.linkedin.com/in/irza-hameed/" target="_blank" style="color:var(--muted);font-size:13px">linkedin.com/in/irzahameed</a>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:44px;height:44px;border-radius:10px;background:rgba(184,167,255,0.08);display:flex;align-items:center;justify-content:center;color:var(--lav)"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div style="font-weight:700">Location</div>
+                <div style="color:var(--muted);font-size:13px">Rawalpindi, Pakistan</div>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div style="max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <div>© 2025 Irza Hameed</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="https://github.com/irzahameed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/irza-hameed/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:irzahameed65@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- wrap -->
+
+  <!-- JS: simple reveal + contact mailto -->
+  <script>
+    // IntersectionObserver reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('show');
+      });
+    }, {threshold: 0.12});
+    reveals.forEach(r => io.observe(r));
+
+    // Contact form: mailto fallback
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const subject = encodeURIComponent(document.getElementById('subject').value.trim());
+      const message = encodeURIComponent(document.getElementById('message').value.trim());
+      const body = encodeURIComponent(`Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\n${decodeURIComponent(message)}`);
+      window.location.href = `mailto:irzahameed65@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
